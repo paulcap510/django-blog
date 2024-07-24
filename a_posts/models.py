@@ -15,4 +15,4 @@ class Post(models.Model):
         return str(self.title)
     
     class Meta:
-        ordering = ['-created'] # display in reverse created prder 
+        ordering = ['-created']
