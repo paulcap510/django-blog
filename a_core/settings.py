@@ -26,11 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'a_posts',
-    # 'django.contrib.sites'
+    'a_users',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django.contrib.sites',  
+    'django_cleanup.apps.CleanupConfig'
 
 ]
 
