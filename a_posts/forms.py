@@ -7,9 +7,10 @@ from .models import *
 class PostCreateForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'artist', 'url', 'image', 'body']
+        fields = ['title', 'artist', 'url', 'image', 'body', 'tags']
         labels = {
             'body': 'Caption',
+            'tags': 'Category',
         }
         widgets = {
             'body': forms.Textarea(attrs={
@@ -20,15 +21,19 @@ class PostCreateForm(ModelForm):
             'url': forms.TextInput(attrs={'placeholder': 'Add URL...'}),
             'image': forms.TextInput(attrs={'placeholder': 'Add Image URL...'}),
             'title': forms.TextInput(attrs={'placeholder': 'Add Title...'}),
-            'artist': forms.TextInput(attrs={'placeholder': 'Add Artist...'})
+            'artist': forms.TextInput(attrs={'placeholder': 'Add Artist...'}),
+            'tags': forms.CheckboxSelectMultiple(),
         }
 
 class PostEditForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'artist', 'url', 'image', 'body']
+        fields = ['title', 'artist', 'url', 'image', 'body', 'tags']
         labels = {
             'body': 'Caption',
+            'tags': 'Category',
+
+
         }
         widgets = {
             'body': forms.Textarea(attrs={
@@ -39,5 +44,7 @@ class PostEditForm(ModelForm):
             'url': forms.TextInput(attrs={'placeholder': 'Add URL...'}),
             'image': forms.TextInput(attrs={'placeholder': 'Add Image URL...'}),
             'title': forms.TextInput(attrs={'placeholder': 'Add Title...'}),
-            'artist': forms.TextInput(attrs={'placeholder': 'Add Artist...'})
+            'artist': forms.TextInput(attrs={'placeholder': 'Add Artist...'}),
+            'tags': forms.CheckboxSelectMultiple(),
+
         }

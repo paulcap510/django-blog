@@ -1,0 +1,32 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md mt-8">
+    <h2 class="text-2xl font-semibold mb-6">Custom Sign In</h2>
+    <p class="mb-4">This is a custom login page.</p>
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="id_login" class="block text-sm font-medium text-gray-700">Email:</label>
+            {{ form.login }}
+        </div>
+        <div class="mb-4">
+            <label for="id_password" class="block text-sm font-medium text-gray-700">Password:</label>
+            {{ form.password }}
+        </div>
+        <div class="mb-4 flex items-center">
+            {{ form.remember }}
+            <label for="id_remember" class="ml-2 block text-sm text-gray-900">Remember Me</label>
+        </div>
+        <div class="mb-4">
+            <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75">Sign In</button>
+        </div>
+        <div class="text-center mb-4">
+            <a href="{% url 'account_reset_password' %}" class="text-sm text-indigo-600 hover:underline">Forgot your password?</a>
+        </div>
+    </form>
+    <div class="text-center">
+        <a href="{% url 'account_signup' %}" class="text-sm text-indigo-600 hover:underline">Sign up for an account</a>
+    </div>
+</div>
+{% endblock %}
