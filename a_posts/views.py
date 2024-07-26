@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 from bs4 import BeautifulSoup
@@ -27,17 +28,10 @@ def home_view(request, tag=None):
     return render(request, 'a_posts/home.html', context)
 
 
-
-
-
-
-
-
+@login_required
 def post_edit_view(request, pk):
-    post = get_object_or_404(Post, id=pk)
-
+    post = get_object_or_404(Post, id=pk, author=request.user)
     form = PostEditForm(instance=post) # prefills the form with the data from the post we passed
-
     if request.method == 'POST':
         form = PostEditForm(request.POST, instance=post)
         if form.is_valid:
@@ -54,8 +48,7 @@ def post_edit_view(request, pk):
     return render(request, 'a_posts/post_edit.html', context)
 
 
-
-
+@login_required
 def post_create_view(request):
     form = PostCreateForm()
 
@@ -74,8 +67,9 @@ def post_create_view(request):
     return render(request, 'a_posts/post_create.html', {'form': form})
 
 
+@login_required 
 def post_delete_view(request, pk):
-    post = get_object_or_404(Post, id=pk)
+    post = get_object_or_404(Post, id=pk, author=request.user)
 
     if request.method == 'POST':
         post.delete()
