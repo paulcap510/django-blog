@@ -7,9 +7,6 @@ import requests
 from django.contrib import messages
 from django.template import loader
 
-
-
-
 def home_view(request, tag=None):
     if tag:
         posts = Post.objects.filter(tags__slug=tag) 
@@ -56,7 +53,7 @@ def post_create_view(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            print(post.image)  # Debug print
+            post.author = request.user
             post.save()
             messages.success(request, 'Post created successfully')
             form.save_m2m()
