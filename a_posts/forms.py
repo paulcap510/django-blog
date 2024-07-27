@@ -48,3 +48,15 @@ class PostEditForm(ModelForm):
             'tags': forms.CheckboxSelectMultiple(),
 
         }
+
+
+class CommentCreateForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body']
+        widgets = {
+            'body' : forms.TextInput(attrs={'placeholder': 'Add comment...'})
+        }
+        labels = {
+            'body': ''
+        }
