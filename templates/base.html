@@ -1,10 +1,10 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome</title>
+    <title>{% block title %}My Site{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/small/64/000000/fire-heart.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +22,13 @@
             --font1: 'Lobster', sans-serif;
         }
         h1 {
-            @apply text-4xl font-bold mb-4
+            @apply text-4xl font-bold mb-4;
         }
         h2 {
-            @apply text-2xl font-bold mb-3
+            @apply text-2xl font-bold mb-3;
         }
         h3 {
-            @apply text-lg font-bold 
+            @apply text-lg font-bold;
         }
         .font1 {
             font-family: var(--font1);
@@ -115,7 +115,7 @@
         }
         form p label {
             width: 7rem;
-            }
+        }
         label {
             margin: 6px 0 3px;
         }
@@ -240,12 +240,13 @@
 
     {% include 'includes/messages.html' %}
 
-{% include 'includes/header.html' %}
+    {% include 'includes/header.html' %}
 
-{% block layout %}
-        {% block content %}
-        {% endblock %}
-{% endblock %}
+    {% block layout %}
+            {% block content %}
+            {% endblock %}
+    {% endblock %}
     
 </body>
 </html>
+
